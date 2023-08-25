@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+
+<h2>Add a Workout</h2>
+
+<form action="/workouts" method="POST">
+    <label>Activity:
+        <select name="activity">
+            <option value="Run">Run</option>
+        </select>
+    </label><br>
+    <br><label>Date & Time:
+        <input type="date" name="date">
+        <input type="time" name="time">
+    </label><br>
+    <br><label>Title:
+        <input type="text" name="title">
+    </label><br>
+    <br><label>Time:
+        <input type="number" name="hours" class="time"> (hours)
+        <input type="number" name="minutes" class="time"> (minutes)
+        <input type="number" name="seconds" class="time"> (seconds)
+    </label><br>
+    <br><label>Distance:
+        <input type="number" name="distance"> (miles)
+    </label><br>
+    <br><div>
+        <button>Add Workout</button>
+    </div>
+</form>
+
+<%- include('../partials/footer') %>

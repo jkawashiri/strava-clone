@@ -19,14 +19,39 @@ const commentSchema = new Schema({
 });
 
 const workoutSchema = new Schema({
+    activity: {
+        type: String,
+        enum: ['Run'],
+        default: 'Run'
+    },
+    date: {
+        type: Date
+    },
+    time: {
+        type: Date
+    },
     title: {
         type: String
     },
     distance: {
         type: Number
     },
-    time: {
-        type: Number
+    hours: {
+        type: Number,
+        min: 0,
+        default: 0
+    },
+    minutes: {
+        type: Number,
+        min: 0,
+        max: 59,
+        default: 0
+    },
+    seconds: {
+        type: Number,
+        min: 0,
+        max: 59,
+        default: 0
     },
     pace: {
         type: Number
@@ -38,4 +63,11 @@ const workoutSchema = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model(Workout, workoutSchema);
+module.exports = mongoose.model('Workout', workoutSchema);
+
+// function pace() {
+//     let hourscon = hours * 60 * 60;
+//     let minutescon = minutes * 60;
+//     let time = hourscon + minutescon + seconds;
+//     return time / distance;
+// }

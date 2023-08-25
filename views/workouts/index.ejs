@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<h2>My Workouts</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Activity</th>
+            <th>Date & Time</th>
+            <th>Title</th>
+            <th>Time</th>
+            <th>Distance</th>
+            <th>Pace</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% workouts.forEach(function(workout) { %>
+            <tr>
+                <td><%= workout.activity %></td>
+                <td>
+                    <%= workout.date %>
+                    <%= workout.time %>
+                </td>
+                <td><%= workout.title %></td>
+                <td>
+                    <%= workout.hours %>
+                    <%= workout.minutes %>
+                    <%= workout.seconds %>
+                </td>
+                <td><%= workout.distance %></td>
+                <td>pace</td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- include('../partials/footer') %>
