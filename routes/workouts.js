@@ -8,6 +8,8 @@ const workouts = require('../controllers/workouts');
 router.get('/', workoutsCtrl.index);
 // GET /workouts/new
 router.get('/new', workoutsCtrl.new);
+// GET /workouts/:id
+router.get('/:id', workoutsCtrl.show);
 // POST /workouts
 router.post('/', workoutsCtrl.create);
 

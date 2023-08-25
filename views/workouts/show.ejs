@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+
+<h2><%= workout.title %></h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Activity</th>
+            <th>Date & Time</th>
+            <th>Time</th>
+            <th>Distance</th>
+            <th>Pace</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= workout.activity %></td>
+            <td><%= (() => { 
+                    let date = new Date(workout.date);
+                    let year = date.getFullYear();
+                    let month = (date.getMonth() + 1).toString().padStart(2, '0');
+                    let day = date.getDate().toString().padStart(2, '0');
+                    let hours = date.getHours().toString().padStart(2, '0');
+                    let minutes = date.getMinutes().toString().padStart(2, '0');
+                    return `${year}-${month}-${day} ${hours}:${minutes}`;
+                }) () %>
+            </td>
+            <td><%= workout.hours %>:<%= workout.minutes %>:<%= workout.seconds %></td>
+            <td><%= workout.distance %> mi</td>
+            <td><% (() => { 
+                    let hourscon = (workout.hours) * 60 * 60;
+                    let minutescon = (workout.minutes) * 60;
+                    let time = hourscon + minutescon + (workout.seconds);
+                    return time / (workout.distance);
+                }) () %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button>Edit</button>
+<button>Delete</button>
+
+<%- include('../partials/footer') %>

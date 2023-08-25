@@ -27,12 +27,20 @@
                         return `${year}-${month}-${day} ${hours}:${minutes}`;
                     }) () %>
                 </td>
-                <td><%= workout.title %></td>
+                <td><a href="/workouts/<%= workout._id %>">
+                    <%= workout.title %>
+                </a></td>
                 <td>
                     <%= workout.hours %>:<%= workout.minutes %>:<%= workout.seconds %>
                 </td>
                 <td><%= workout.distance %> mi</td>
-                <td>pace</td>
+                <td><% (() => { 
+                        let hourscon = (workout.hours) * 60 * 60;
+                        let minutescon = (workout.minutes) * 60;
+                        let time = hourscon + minutescon + (workout.seconds);
+                        return time / (workout.distance);
+                    }) () %>
+                </td>
             </tr>
         <% }); %>
     </tbody>

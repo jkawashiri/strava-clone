@@ -2,6 +2,7 @@ const Workout = require('../models/workout');
 
 module.exports = {
     index,
+    show,
     new: newWorkout,
     create
 };
@@ -9,6 +10,11 @@ module.exports = {
 async function index(req, res) {
     const workouts = await Workout.find({});
     res.render('workouts/index', { workouts });
+}
+
+async function show(req, res) {
+    const workout = await Workout.findById(req.params.id);
+    res.render('workouts/show', { workout });
 }
 
 function newWorkout(req, res) {

@@ -51,7 +51,7 @@ const workoutSchema = new Schema({
         default: 0
     },
     pace: {
-        type: Number
+        type: String
     },
     comments: {
         type: [commentSchema]
@@ -62,9 +62,3 @@ const workoutSchema = new Schema({
 
 module.exports = mongoose.model('Workout', workoutSchema);
 
-// function pace() {
-//     let hourscon = hours * 60 * 60;
-//     let minutescon = minutes * 60;
-//     let time = hourscon + minutescon + seconds;
-//     return time / distance;
-// }
