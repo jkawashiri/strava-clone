@@ -41,4 +41,27 @@
 <button>Edit</button>
 <button>Delete</button>
 
+
+<br><br><form action="/workouts/<%= workout._id %>/comments" method="POST">
+    <textarea name="comment" id="comment"></textarea><br>
+    <button type="submit">Add Comment</button>
+</form>
+
+<table>
+    <tbody>
+        <% workout.comments.forEach(function(comment) { %>
+        <tr>
+            <td><%= comment.createdAt.toLocaleDateString() %></td>
+            <td class="review-user"><img alt="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer"><%= comment.userName %></td>
+            <td><%= comment.comment %></td>
+            <td>
+                <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
 <%- include('../partials/footer') %>

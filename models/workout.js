@@ -5,9 +5,6 @@ const commentSchema = new Schema({
     comment: {
         type: String
     },
-    date: {
-        type: Date
-    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
