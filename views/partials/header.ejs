@@ -9,24 +9,24 @@
 <body>
     <nav>
         <% if (user) { %>
-            <a href="/">
+            <a href="/" class="button">
                 <button>Home</button>
             </a>
 
-            <a href="/workouts">
+            <a href="/workouts" class="button">
                 <button>My Workouts</button>
             </a>
 
-            <a href="/workouts/new">
+            <a href="/workouts/new" class="button">
                 <button>Add Workout</button>
             </a>
 
-            <a href="/logout">
+            <a href="/logout" class="button">
                 <button>Log Out</button>
             </a>
 
         <% } else { %>
-            <a href="/auth/google">
+            <a href="/auth/google" class="button">
                 <button>Log In</button>
             </a>
         <% } %>

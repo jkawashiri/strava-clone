@@ -1,8 +1,8 @@
 <%- include('../partials/header') %>
 
-<h2>Add a Workout</h2>
+<h2>Edit</h2>
 
-<form action="/workouts" method="POST">
+<form action="/workouts/<%= workout._id %>?_method=PUT" method="POST">
     <label>Activity:
         <select name="activity">
             <option value="Run" selected>Run</option>
@@ -23,7 +23,7 @@
         <input type="number" name="distance"> (miles)
     </label><br>
     <br><div>
-        <button>Add Workout</button>
+        <button>Save</button>
     </div>
 </form>
 <p><%= errorMsg %></p>
