@@ -1,7 +1,8 @@
 const Workout = require('../models/workout');
 
 module.exports = {
-    create
+    create,
+    delete: deleteComment
 };
 
 async function create(req, res) {
@@ -17,5 +18,13 @@ async function create(req, res) {
     } catch (err) {
         console.log(err);
     }
+    res.redirect(`/workouts/${workout._id}`);
+}
+
+async function deleteComment(req, res) {
+    const workout = await Workout.findOne({ 'comments._id': req.params.id, 'comments.user': req.user._id });
+    if (!workout) return res.redirect('/workouts');
+    workout.comments.remove(req.params.id);
+    await workout.save();
     res.redirect(`/workouts/${workout._id}`);
 }

@@ -4,5 +4,7 @@ const commentsCtrl = require('../controllers/comments');
 
 // POST /workouts/:id/comments
 router.post('/workouts/:id/comments', commentsCtrl.create);
+// DELETE /comments
+router.delete('/comments/:id', commentsCtrl.delete);
 
 module.exports = router;
