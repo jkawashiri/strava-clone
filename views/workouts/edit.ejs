@@ -9,18 +9,18 @@
         </select>
     </label><br>
     <br><label>Date & Time:
-        <input type="datetime-local" name="date">
+        <input type="datetime-local" name="date" value="<%= convertToLocalTimezone(workout.date) %>">
     </label><br>
     <br><label>Title:
-        <input type="text" name="title" required="true">
+        <input type="text" name="title" required="true" value="<%= workout.title %>">
     </label><br>
     <br><label>Time:
-        <input type="number" name="hours" class="time"> (hours)
-        <input type="number" name="minutes" class="time"> (minutes)
-        <input type="number" name="seconds" class="time"> (seconds)
+        <input type="number" name="hours" class="time" value="<%= workout.hours %>"> (hours)
+        <input type="number" name="minutes" class="time" value="<%= workout.minutes %>"> (minutes)
+        <input type="number" name="seconds" class="time" value="<%= workout.seconds %>"> (seconds)
     </label><br>
     <br><label>Distance:
-        <input type="number" name="distance"> (miles)
+        <input type="number" name="distance" value="<%= workout.distance %>"> (miles)
     </label><br>
     <br><div>
         <button>Save</button>

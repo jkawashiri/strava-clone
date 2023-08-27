@@ -48,9 +48,6 @@ const workoutSchema = new Schema({
         max: 59,
         default: 0
     },
-    pace: {
-        type: String
-    },
     comments: {
         type: [commentSchema]
     }

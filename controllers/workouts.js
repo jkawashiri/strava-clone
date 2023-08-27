@@ -36,7 +36,12 @@ async function create(req, res) {
 
 async function edit(req, res) {
     const workout = await Workout.findById(req.params.id);
-    res.render('workouts/edit', {errorMsg: '', workout});
+    function convertToLocalTimezone(date) {
+        const timezoneOffset = new Date().getTimezoneOffset() * 60000;
+        const localTimezone = new Date(date - timezoneOffset).toISOString();
+        return localTimezone.slice(0, 16);
+    }
+    res.render('workouts/edit', {errorMsg: '', workout, convertToLocalTimezone});
 }
 
 async function update(req, res) {
