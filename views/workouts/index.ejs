@@ -30,15 +30,25 @@
                 <td><a href="/workouts/<%= workout._id %>">
                     <%= workout.title %>
                 </a></td>
-                <td>
-                    <%= workout.hours %>:<%= workout.minutes %>:<%= workout.seconds %>
+                <td><%= (() => {
+                        let formattedHours = String(workout.hours || 0).padStart(2, '0');
+                        let formattedMinutes = String(workout.minutes || 0).padStart(2, '0');
+                        let formattedSeconds = String(workout.seconds || 0).padStart(2, '0');
+                        return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+                    }) () %>
                 </td>
                 <td><%= workout.distance %> mi</td>
-                <td><% (() => { 
-                        let hourscon = (workout.hours) * 60 * 60;
+                <td><%= (() => { 
+                        let hourscon = (workout.hours) * 3600;
                         let minutescon = (workout.minutes) * 60;
                         let time = hourscon + minutescon + (workout.seconds);
-                        return time / (workout.distance);
+                        let paceInSeconds = time / (workout.distance);
+
+                        let paceHours = Math.floor(paceInSeconds / 3600);
+                        let paceMinutes = Math.floor((paceInSeconds % 3600) / 60);
+                        let paceSeconds = Math.floor(paceInSeconds % 60);
+
+                        return `${paceHours.toString().padStart(2, '0')}:${paceMinutes.toString().padStart(2, '0')}:${paceSeconds.toString().padStart(2, '0')}`;
                     }) () %>
                 </td>
             </tr>
