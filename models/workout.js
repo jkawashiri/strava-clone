@@ -25,7 +25,8 @@ const workoutSchema = new Schema({
         type: Date
     },
     title: {
-        type: String
+        type: String,
+        required: true
     },
     distance: {
         type: Number

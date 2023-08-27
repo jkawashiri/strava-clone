@@ -41,14 +41,14 @@
 <a href="/workouts/<%= workout._id %>/edit" class="button">
     <button>Edit</button>
 </a>
-<button>Delete</button>
-
+<form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete</button>
+</form>
 
 <br><br><form action="/workouts/<%= workout._id %>/comments" method="POST">
     <textarea name="comment" id="comment"></textarea><br>
     <button type="submit">Add Comment</button>
 </form>
-
 <table>
     <tbody>
         <% workout.comments.forEach(function(comment) { %>

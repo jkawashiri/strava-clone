@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 var workoutsCtrl = require('../controllers/workouts');
-const workouts = require('../controllers/workouts');
-const workout = require('../models/workout');
 
 // GET /workouts
 router.get('/', workoutsCtrl.index);
@@ -17,5 +15,7 @@ router.get('/:id/edit', workoutsCtrl.edit);
 router.post('/', workoutsCtrl.create);
 // PUT /workouts/:id
 router.put('/:id', workoutsCtrl.update);
+// DELETE /workouts/:id
+router.delete('/:id', workoutsCtrl.delete);
 
 module.exports = router;

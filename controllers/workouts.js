@@ -6,7 +6,8 @@ module.exports = {
     new: newWorkout,
     create,
     edit,
-    update
+    update,
+    delete: deleteWorkout
 };
 
 async function index(req, res) {
@@ -48,4 +49,9 @@ async function update(req, res) {
         console.log(err);
         res.render('workouts/edit', { errorMsg: err.message });
     }
+}
+
+async function deleteWorkout(req, res) {
+    await Workout.findByIdAndRemove(req.params.id);
+    res.redirect('/workouts');
 }
