@@ -3,9 +3,12 @@ const router = express.Router();
 
 const passport = require('passport');
 
+const Workout = require('../models/workout');
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', async function(req, res, next) {
+  const workouts = await Workout.find({});
+  res.render('index', { workouts });
 });
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(
