@@ -29,7 +29,12 @@
                 let formattedHours = String(workout.hours || 0).padStart(2, '0');
                 let formattedMinutes = String(workout.minutes || 0).padStart(2, '0');
                 let formattedSeconds = String(workout.seconds || 0).padStart(2, '0');
-                return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+
+                if (formattedHours === '00') {
+                    return `${formattedMinutes}:${formattedSeconds}`;
+                } else {
+                    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+                }
             }) () %>
             </td>
             <td><%= workout.distance %> mi</td>
@@ -43,7 +48,11 @@
                 let paceMinutes = Math.floor((paceInSeconds % 3600) / 60);
                 let paceSeconds = Math.floor(paceInSeconds % 60);
 
-                return `${paceHours.toString().padStart(2, '0')}:${paceMinutes.toString().padStart(2, '0')}:${paceSeconds.toString().padStart(2, '0')}`;
+                if (paceHours === 0) {
+                    return `${paceMinutes.toString().padStart(2, '0')}:${paceSeconds.toString().padStart(2, '0')}`;
+                } else {
+                    return `${paceHours.toString().padStart(2, '0')}:${paceMinutes.toString().padStart(2, '0')}:${paceSeconds.toString().padStart(2, '0')}`;
+                }
             }) () %>/mi
             </td>
         </tr>
@@ -68,7 +77,7 @@
         <% workout.comments.forEach(function(comment) { %>
         <tr>
             <td><%= comment.createdAt.toLocaleDateString() %></td>
-            <td class="review-user"><img alt="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer"><%= comment.userName %></td>
+            <td class="user"><img alt="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer"><%= comment.userName %></td>
             <td><%= comment.comment %></td>
             <td>
                 <% if (user?._id.equals(comment.user)) { %>

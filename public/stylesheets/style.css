@@ -16,13 +16,13 @@ a.button {
   height: 50px;
 }
 
-.review-user {
+.user {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.review-user img {
+.user img {
   border-radius: 50%;
   height: 40px;
 }
