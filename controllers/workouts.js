@@ -32,7 +32,7 @@ async function create(req, res) {
     
     try {
         await Workout.create(req.body);
-        res.redirect('/workouts');
+        res.redirect('/');
     } catch (err) {
         console.log(err);
         res.render('workouts/new', { errorMsg: err.message });
