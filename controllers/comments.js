@@ -9,7 +9,7 @@ async function create(req, res) {
     const workout = await Workout.findById(req.params.id);
 
     req.body.user = req.user._id;
-    req.body.username = req.user.name;
+    req.body.userName = req.user.name;
     req.body.userAvatar = req.user.avatar;
 
     workout.comments.push(req.body);
