@@ -50,12 +50,14 @@
     </tbody>
 </table>
 
-<a href="/workouts/<%= workout._id %>/edit" class="button">
-    <button>Edit</button>
-</a>
-<form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete</button>
-</form>
+<% if (user?._id.equals(workout.user)) { %>
+    <a href="/workouts/<%= workout._id %>/edit" class="button">
+        <button>Edit</button>
+    </a>
+    <form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+<% } %>
 
 <br><br><form action="/workouts/<%= workout._id %>/comments" method="POST">
     <textarea name="comment" id="comment"></textarea><br>
@@ -69,9 +71,11 @@
             <td class="review-user"><img alt="avatar" src="<%= comment.userAvatar %>" referrerpolicy="no-referrer"><%= comment.userName %></td>
             <td><%= comment.comment %></td>
             <td>
-                <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                    <button type="submit">Delete</button>
-                </form>
+                <% if (user?._id.equals(comment.user)) { %>
+                    <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                <% } %>
             </td>
         </tr>
         <% }); %>
