@@ -26,3 +26,8 @@ a.button {
   border-radius: 50%;
   height: 40px;
 }
+
+.edit-delete {
+  display: inline-flex;
+  gap: 10px;
+}

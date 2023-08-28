@@ -66,14 +66,17 @@
 </table>
 
 <% if (user?._id.equals(workout.user)) { %>
-    <a href="/workouts/<%= workout._id %>/edit" class="button">
-        <button>Edit</button>
-    </a>
-    <form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete</button>
-    </form>
+    <div class="edit-delete">
+        <a href="/workouts/<%= workout._id %>/edit">
+            <button>Edit</button>
+        </a>
+        <form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+        </form>
+    </div>
 <% } %>
 
+<button>Like</button>
 <br><br><form action="/workouts/<%= workout._id %>/comments" method="POST">
     <textarea name="comment" id="comment"></textarea><br>
     <button type="submit">Add Comment</button>
