@@ -16,6 +16,7 @@
     </thead>
     <tbody>
         <% workouts.forEach(function(workout) { %>
+            <% if (workout.user.equals(userId)) { %>
             <tr>
                 <td class="user"><img alt="avatar" src="<%= workout.userAvatar %>" referrerpolicy="no-referrer"><%= workout.userName %></td>
                 <td><%= workout.activity %></td>
@@ -63,6 +64,7 @@
                     }) () %>/mi
                 </td>
             </tr>
+            <% } %>
         <% }); %>
     </tbody>
 </table>

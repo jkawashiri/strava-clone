@@ -11,8 +11,9 @@ module.exports = {
 };
 
 async function index(req, res) {
+    const userId = req.user._id;
     const workouts = await Workout.find({});
-    res.render('workouts/index', { workouts });
+    res.render('workouts/index', { workouts, userId });
 }
 
 async function show(req, res) {
