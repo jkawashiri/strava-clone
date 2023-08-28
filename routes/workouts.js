@@ -6,11 +6,11 @@ const workoutsCtrl = require('../controllers/workouts');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 // GET /workouts
-router.get('/', workoutsCtrl.index);
+router.get('/', ensureLoggedIn, workoutsCtrl.index);
 // GET /workouts/new
 router.get('/new', ensureLoggedIn, workoutsCtrl.new);
 // GET /workouts/:id
-router.get('/:id', workoutsCtrl.show);
+router.get('/:id', ensureLoggedIn, workoutsCtrl.show);
 // GET /workouts/:id/edit
 router.get('/:id/edit', ensureLoggedIn, workoutsCtrl.edit);
 // POST /workouts

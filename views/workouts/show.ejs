@@ -20,18 +20,22 @@
                     let year = date.getFullYear();
                     let month = (date.getMonth() + 1).toString().padStart(2, '0');
                     let day = date.getDate().toString().padStart(2, '0');
-                    let hours = date.getHours().toString().padStart(2, '0');
+                    let hours = date.getHours().toString().padStart(2);
                     let minutes = date.getMinutes().toString().padStart(2, '0');
                     return `${year}-${month}-${day} ${hours}:${minutes}`;
                 }) () %>
             </td>
             <td><%= (() => {
                 let formattedHours = String(workout.hours || 0).padStart(2);
-                let formattedMinutes = String(workout.minutes || 0).padStart(2, '0');
+                let formattedMinutes = String(workout.minutes || 0).padStart(2);
                 let formattedSeconds = String(workout.seconds || 0).padStart(2, '0');
 
-                if (formattedHours === ' 0') {
+                if (formattedHours === ' 0' && formattedMinutes === ' 0') {
+                    return `${formattedSeconds}s`;
+                } else if (formattedHours === ' 0') {
                     return `${formattedMinutes}:${formattedSeconds}`;
+                } else if (formattedMinutes === ' 0') {
+                    return `${formattedHours}:00:${formattedSeconds}`;
                 } else {
                     return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
                 }
@@ -48,7 +52,9 @@
                 let paceMinutes = Math.floor((paceInSeconds % 3600) / 60);
                 let paceSeconds = Math.floor(paceInSeconds % 60);
 
-                if (paceHours === 0) {
+                if (paceHours === 0 && paceMinutes === 0) {
+                    return `${paceSeconds}s`
+                } else if (paceHours === 0) {
                     return `${paceMinutes.toString().padStart(2)}:${paceSeconds.toString().padStart(2, '0')}`;
                 } else {
                     return `${paceHours.toString().padStart(2, '0')}:${paceMinutes.toString().padStart(2, '0')}:${paceSeconds.toString().padStart(2, '0')}`;
