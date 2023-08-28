@@ -1,6 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const likeSchema = new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    userName: String,
+    userAvatar: String
+}, {
+    timestamps: true
+});
+
 const commentSchema = new Schema({
     comment: {
         type: String
@@ -51,6 +63,9 @@ const workoutSchema = new Schema({
     },
     comments: {
         type: [commentSchema]
+    },
+    likes: {
+        type: [likeSchema]
     },
     user: {
         type: Schema.Types.ObjectId,

@@ -76,7 +76,18 @@
     </div>
 <% } %>
 
-<button>Like</button>
+<% if (user) { %>
+    <% if (!workout.likes.some(like => like.user.equals(userId))) { %>
+        <form action="/workouts/<%= workout._id %>/likes" method="POST">
+            <button type="submit">Like</button>
+        </form>
+    <% } else { %>
+        <form>
+            <button>Unlike</button>
+        </form>
+    <% } %>
+<% } %>
+
 <br><br><form action="/workouts/<%= workout._id %>/comments" method="POST">
     <textarea name="comment" id="comment"></textarea><br>
     <button type="submit">Add Comment</button>

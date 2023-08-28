@@ -18,7 +18,8 @@ async function index(req, res) {
 
 async function show(req, res) {
     const workout = await Workout.findById(req.params.id);
-    res.render('workouts/show', { workout });
+    const userId = req.user._id;
+    res.render('workouts/show', { workout, userId });
 }
 
 function newWorkout(req, res) {
