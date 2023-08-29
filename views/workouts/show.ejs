@@ -82,8 +82,8 @@
             <button type="submit">Like</button>
         </form>
     <% } else { %>
-        <form>
-            <button>Unlike</button>
+        <form action="/likes/<%= likeId %>?_method=DELETE" method="POST">
+            <button type="submit">Unlike</button>
         </form>
     <% } %>
 <% } %>

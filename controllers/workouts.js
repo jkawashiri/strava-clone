@@ -19,7 +19,9 @@ async function index(req, res) {
 async function show(req, res) {
     const workout = await Workout.findById(req.params.id);
     const userId = req.user._id;
-    res.render('workouts/show', { workout, userId });
+    const likeIndex = workout.likes.findIndex(like => like.user.equals(userId));
+    const likeId = likeIndex !== -1 ? workout.likes[likeIndex]._id : null;
+    res.render('workouts/show', { workout, userId, likeId });
 }
 
 function newWorkout(req, res) {

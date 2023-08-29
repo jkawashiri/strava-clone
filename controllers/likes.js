@@ -1,10 +1,11 @@
 const Workout = require('../models/workout');
 
 module.exports = {
-    create
+    create: like,
+    delete: unlike
 };
 
-async function create(req, res) {
+async function like(req, res) {
     const workout = await Workout.findById(req.params.id);
 
     req.body.user = req.user._id;
@@ -19,5 +20,13 @@ async function create(req, res) {
     } catch (err) {
         console.log(err);
     }
+    res.redirect(`/workouts/${workout._id}`);
+}
+
+async function unlike(req, res) {
+    const workout = await Workout.findOne({ 'likes._id': req.params.id, 'likes.user': req.user._id });
+    if (!workout) return res.redirect('/workouts');
+    workout.likes.remove(req.params.id);
+    await workout.save();
     res.redirect(`/workouts/${workout._id}`);
 }
