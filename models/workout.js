@@ -31,7 +31,7 @@ const commentSchema = new Schema({
 const workoutSchema = new Schema({
     activity: {
         type: String,
-        enum: ['Run'],
+        enum: ['Run', 'Swim', 'Bike'],
         default: 'Run'
     },
     date: {
@@ -43,6 +43,11 @@ const workoutSchema = new Schema({
     },
     distance: {
         type: Number
+    },
+    metric: {
+        type: String,
+        enum: ['mi', 'yd', 'km', 'm'],
+        default: 'mi'
     },
     hours: {
         type: Number,

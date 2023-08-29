@@ -6,6 +6,8 @@
     <label>Activity:
         <select name="activity">
             <option value="Run" selected>Run</option>
+            <option value="Swim">Swim</option>
+            <option value="Bike">Bike</option>
         </select>
     </label><br>
     <br><label>Date & Time:
@@ -20,7 +22,13 @@
         <input type="number" name="seconds" class="time"> (seconds)
     </label><br>
     <br><label>Distance:
-        <input type="number" name="distance" step="0.01"> (miles)
+        <input type="number" name="distance" step="0.01">
+        <select name="metric">
+            <option value ="mi" selected>mi</option>
+            <option value="yd">yd</option>
+            <option value="km">km</option>
+            <option value="m">m</option>
+        </select>
     </label><br>
     <br><div>
         <button>Add Workout</button>

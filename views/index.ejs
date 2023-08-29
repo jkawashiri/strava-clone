@@ -49,7 +49,7 @@
                         }
                     }) () %>
                 </td>
-                <td><%= workout.distance %> mi</td>
+                <td><%= workout.distance %> <%= workout.metric %></td>
                 <td><%= (() => { 
                         let hourscon = (workout.hours) * 3600;
                         let minutescon = (workout.minutes) * 60;
@@ -67,7 +67,7 @@
                         } else {
                             return `${paceHours.toString().padStart(2, '0')}:${paceMinutes.toString().padStart(2, '0')}:${paceSeconds.toString().padStart(2, '0')}`;
                         }
-                    }) () %>/mi
+                    }) () %>/<%= workout.metric %>
                 </td>
             </tr>
         <% }); %>
