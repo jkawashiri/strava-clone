@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<h2>Likes</h2>
+
+<table>
+    <tbody>
+        <% workout.likes.forEach(function(like) { %>
+        <tr>
+            <td class="user"><img alt="avatar" src="<%= like.userAvatar %>" referrerpolicy="no-referrer"><%= like.userName %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<a href="/workouts/<%= workout._id %>">Return</a>
+
+<%- include('../partials/footer') %>

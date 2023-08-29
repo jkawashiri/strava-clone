@@ -88,6 +88,10 @@
     <% } %>
 <% } %>
 
+<% if (workout.likes.length !== 0) { %>
+    <a href="/workouts/<%= workout._id %>/likes">Likes:</a> <%= workout.likes.length %>
+<% } %>
+
 <br><br><form action="/workouts/<%= workout._id %>/comments" method="POST">
     <textarea name="comment" id="comment"></textarea><br>
     <button type="submit">Add Comment</button>

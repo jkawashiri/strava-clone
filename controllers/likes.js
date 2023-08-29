@@ -1,9 +1,15 @@
 const Workout = require('../models/workout');
 
 module.exports = {
+    index,
     create: like,
     delete: unlike
 };
+
+async function index(req, res) {
+    const workout = await Workout.findById(req.params.id);
+    res.render('likes/index', { workout });
+}
 
 async function like(req, res) {
     const workout = await Workout.findById(req.params.id);
