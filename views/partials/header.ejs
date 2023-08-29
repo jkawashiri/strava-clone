@@ -4,25 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Strava</title>
 </head>
 <body>
     <nav>
         <% if (user) { %>
-            <a href="/" class="button">
-                <button>Home</button>
-            </a>
+            <div class="dropdown">
+                <button class="dropbtn"><span class="material-symbols-outlined">
+                    menu
+                    </span> Dashboard</button>
+                <div class="dropdown-content">
+                    <a href="/">Home</a>
 
-            <a href="/workouts" class="button">
-                <button>My Workouts</button>
-            </a>
+                    <a href="/workouts">My Activities</a>
+        
+                    <a href="/logout">Log Out</a>
+                </div>
+            </div>
 
-            <a href="/workouts/new" class="button">
-                <button>Add Workout</button>
-            </a>
-
-            <a href="/logout" class="button">
-                <button>Log Out</button>
+            <a href="/workouts/new">
+                <span class="material-symbols-outlined" id="addbtn">
+                    add_circle
+                </span>
             </a>
 
         <% } else { %>
