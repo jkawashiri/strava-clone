@@ -8,30 +8,33 @@
     <title>Strava</title>
 </head>
 <body>
+    <% if (user) { %>
     <nav>
-        <% if (user) { %>
-            <div class="dropdown">
-                <button class="dropbtn"><span class="material-symbols-outlined">
-                    menu
-                    </span> Dashboard</button>
-                <div class="dropdown-content">
-                    <a href="/">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn"><span class="material-symbols-outlined">
+                menu
+                </span> Dashboard</button>
+            <div class="dropdown-content">
+                <a href="/">Home</a>
 
-                    <a href="/workouts">My Activities</a>
-        
-                    <a href="/logout">Log Out</a>
-                </div>
+                <a href="/workouts">My Activities</a>
+    
+                <a href="/logout">Log Out</a>
             </div>
+        </div>
 
-            <a href="/workouts/new">
-                <span class="material-symbols-outlined" id="addbtn">
-                    add_circle
-                </span>
-            </a>
+        <a href="/workouts/new">
+            <span class="material-symbols-outlined" id="addbtn">
+                add_circle
+            </span>
+        </a>
+    </nav>
 
-        <% } else { %>
+    <% } else { %>
+        <section id="logout">
+            <h2>Strava</h2>
             <a href="/auth/google" class="button">
                 <button>Log In</button>
             </a>
-        <% } %>
-    </nav>
+        </section>
+    <% } %>
