@@ -87,31 +87,37 @@
 
 <br><br>
 
-<% if (user) { %>
-    <% if (!workout.likes.some(like => like.user.equals(userId))) { %>
-        <form action="/workouts/<%= workout._id %>/likes" method="POST">
-            <button type="submit" id="likebtn"><span class="material-symbols-outlined">
-                thumb_up
-                </span></button>
-        </form>
-    <% } else { %>
-        <form action="/likes/<%= likeId %>?_method=DELETE" method="POST">
-            <button type="submit" id="dislikebtn"><span class="material-symbols-outlined">
-                thumb_up
-                </span></button>
-        </form>
-    <% } %>
-<% } %>
+<div id="likecomment">
+    <div id="like">
+        <% if (user) { %>
+            <% if (!workout.likes.some(like => like.user.equals(userId))) { %>
+                <form action="/workouts/<%= workout._id %>/likes" method="POST">
+                    <button type="submit" id="likebtn"><span class="material-symbols-outlined">
+                        thumb_up
+                        </span></button>
+                </form>
+            <% } else { %>
+                <form action="/likes/<%= likeId %>?_method=DELETE" method="POST">
+                    <button type="submit" id="dislikebtn"><span class="material-symbols-outlined">
+                        thumb_up
+                        </span></button>
+                </form>
+            <% } %>
+        <% } %>
+        <% if (workout.likes.length !== 0) { %>
+            <a href="/workouts/<%= workout._id %>/likes" class="link">Likes:</a> <%= workout.likes.length %>
+        <% } %>
+    </div>
 
-<% if (workout.likes.length !== 0) { %>
-    <a href="/workouts/<%= workout._id %>/likes" class="link">Likes:</a> <%= workout.likes.length %>
-<% } %>
+        <br><br><form action="/workouts/<%= workout._id %>/comments" method="POST">
+            <div id="commentbtn">
+                <textarea name="comment" id="comment"></textarea><br>
+                <button type="submit">Add Comment</button>
+            </div>
+        </form><br>
+</div><br>
 
-<br><br><form action="/workouts/<%= workout._id %>/comments" method="POST">
-    <textarea name="comment" id="comment"></textarea><br>
-    <button type="submit">Add Comment</button>
-</form><br>
-<table>
+<table id="commentslist">
     <tbody>
         <% workout.comments.forEach(function(comment) { %>
         <tr>
