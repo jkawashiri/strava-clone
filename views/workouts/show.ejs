@@ -68,10 +68,14 @@
 <% if (user?._id.equals(workout.user)) { %>
     <div class="edit-delete">
         <a href="/workouts/<%= workout._id %>/edit">
-            <button>Edit</button>
+            <button id="editbtn"><span class="material-symbols-outlined">
+                edit
+                </span>Edit</button>
         </a>
         <form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
-            <button type="submit">Delete</button>
+            <button type="submit" id="deletebtn"><span class="material-symbols-outlined">
+                delete
+                </span>Delete</button>
         </form>
     </div>
 <% } %>
@@ -79,17 +83,21 @@
 <% if (user) { %>
     <% if (!workout.likes.some(like => like.user.equals(userId))) { %>
         <form action="/workouts/<%= workout._id %>/likes" method="POST">
-            <button type="submit">Like</button>
+            <button type="submit" id="likebtn"><span class="material-symbols-outlined">
+                thumb_up
+                </span></button>
         </form>
     <% } else { %>
         <form action="/likes/<%= likeId %>?_method=DELETE" method="POST">
-            <button type="submit">Unlike</button>
+            <button type="submit" id="dislikebtn"><span class="material-symbols-outlined">
+                thumb_up
+                </span></button>
         </form>
     <% } %>
 <% } %>
 
 <% if (workout.likes.length !== 0) { %>
-    <a href="/workouts/<%= workout._id %>/likes">Likes:</a> <%= workout.likes.length %>
+    <a href="/workouts/<%= workout._id %>/likes" class="link">Likes:</a> <%= workout.likes.length %>
 <% } %>
 
 <br><br><form action="/workouts/<%= workout._id %>/comments" method="POST">

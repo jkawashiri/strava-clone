@@ -30,7 +30,7 @@
                         return `${year}-${month}-${day} ${hours}:${minutes}`;
                     }) () %>
                 </td>
-                <td><a href="/workouts/<%= workout._id %>">
+                <td><a href="/workouts/<%= workout._id %>" class="link">
                     <%= workout.title %>
                 </a></td>
                 <td><%= (() => {
