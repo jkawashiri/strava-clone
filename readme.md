@@ -4,15 +4,15 @@ Strava is a popular app that many people use to track their fitness endeavors. T
 
 # Screenshots
 Home page:
-![Screenshot](https://imgur.com/EHhNpnd)
+![Screenshot](https://i.imgur.com/EHhNpnd.png)
 "My Activities" page:
-![Screenshot](https://imgur.com/LlgzAaf)
+![Screenshot](https://i.imgur.com/LlgzAaf.png)
 "Show View" page:
-![Screenshot](https://imgur.com/2zmmDQK)
+![Screenshot](https://i.imgur.com/2zmmDQK.png)
 Adding an Activity page:
-![Screenshot](https://imgur.com/VGrsoH8)
+![Screenshot](https://i.imgur.com/VGrsoH8.png)
 Editing an Activity page:
-![Screenshot](https://imgur.com/OW9np4f)
+![Screenshot](https://i.imgur.com/OW9np4f.png)
 
 # Technologies Used
 - HTML
