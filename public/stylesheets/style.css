@@ -19,13 +19,13 @@ a {
 
 .user {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
 .user img {
   border-radius: 50%;
   height: 40px;
+  margin-right: 10px;
 }
 
 .edit-delete {
@@ -157,6 +157,54 @@ nav {
 }
 
 th, td {
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+th {
+  background-color: white;
+}
+
+#activitytitle {
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+}
+
+#activitytitle:hover {
+  color: darkblue;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  background-color: white;
+  padding: 20px;
+}
+
+.workoutdetails {
+  margin-left: 20px;
+}
+
+.horizontaldetails {
+  display: flex;
+  align-items: center;
+}
+
+.detail {
+  margin: 10px 10px 10px 0;
+} 
+
+.date {
+  color: gray;
+  margin-left: 48px;
+}
+
+.workoutdata {
+  font-size: 18px;
+}
+
+.workoutlabel {
+  color: gray;
 }

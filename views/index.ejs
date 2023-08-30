@@ -1,77 +1,96 @@
 <%- include('./partials/header') %>
 
 <% if (user) { %>
-<h2>Strava</h2>
-<table>
-    <thead>
-        <tr>
-            <th>User</th>
-            <th>Activity</th>
-            <th>Date & Time</th>
-            <th>Title</th>
-            <th>Time</th>
-            <th>Distance</th>
-            <th>Pace</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% workouts.sort((a, b) => new Date(b.date) - new Date(a.date)).forEach(function(workout) { %>
-            <tr>
-                <td class="user"><img alt="avatar" src="<%= workout.userAvatar %>" referrerpolicy="no-referrer"><%= workout.userName %></td>
-                <td><%= workout.activity %></td>
-                <td><%= (() => { 
-                        let date = new Date(workout.date);
-                        let year = date.getFullYear();
-                        let month = (date.getMonth() + 1).toString().padStart(2, '0');
-                        let day = date.getDate().toString().padStart(2, '0');
-                        let hours = date.getHours().toString().padStart(2);
-                        let minutes = date.getMinutes().toString().padStart(2, '0');
-                        return `${year}-${month}-${day} ${hours}:${minutes}`;
-                    }) () %>
-                </td>
-                <td><a href="/workouts/<%= workout._id %>" class="link">
-                    <%= workout.title %>
-                </a></td>
-                <td><%= (() => {
-                        let formattedHours = String(workout.hours || 0).padStart(2);
-                        let formattedMinutes = String(workout.minutes || 0).padStart(2);
-                        let formattedSeconds = String(workout.seconds || 0).padStart(2, '0');
+<h2>Home</h2>
 
-                        if (formattedHours === ' 0' && formattedMinutes === ' 0') {
-                            return `${formattedSeconds}s`;
-                        } else if (formattedHours === ' 0') {
-                            return `${formattedMinutes}:${formattedSeconds}`;
-                        } else if (formattedMinutes === ' 0') {
-                            return `${formattedHours}:00:${formattedSeconds}`;
-                        } else {
-                            return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-                        }
-                    }) () %>
-                </td>
-                <td><%= workout.distance %> <%= workout.metric %></td>
-                <td><%= (() => { 
-                        let hourscon = (workout.hours) * 3600;
-                        let minutescon = (workout.minutes) * 60;
-                        let time = hourscon + minutescon + (workout.seconds);
-                        let paceInSeconds = time / (workout.distance);
+    <% workouts.sort((a, b) => new Date(b.date) - new Date(a.date)).forEach(function(workout) { %>
+    <div class="post">
+        <div class="user"><img alt="avatar" src="<%= workout.userAvatar %>" referrerpolicy="no-referrer"><%= workout.userName %></div>
+        <div class="date"><%= (() => { 
+                let date = new Date(workout.date);
+                let today = new Date();
+                let yesterday = new Date();
+                yesterday.setDate(today.getDate() - 1);
 
-                        let paceHours = Math.floor(paceInSeconds / 3600);
-                        let paceMinutes = Math.floor((paceInSeconds % 3600) / 60);
-                        let paceSeconds = Math.floor(paceInSeconds % 60);
+                let year = date.getFullYear();
+                let month = (date.getMonth() + 1).toString().padStart(2, '0');
+                let day = date.getDate().toString().padStart(2, '0');
+                let hours = date.getHours().toString().padStart(2);
+                let minutes = date.getMinutes().toString().padStart(2, '0');
 
-                        if (paceHours === 0 && paceMinutes === 0) {
-                            return `${paceSeconds}s`
-                        } else if (paceHours === 0) {
-                            return `${paceMinutes.toString().padStart(2)}:${paceSeconds.toString().padStart(2, '0')}`;
-                        } else {
-                            return `${paceHours.toString().padStart(2, '0')}:${paceMinutes.toString().padStart(2, '0')}:${paceSeconds.toString().padStart(2, '0')}`;
-                        }
-                    }) () %>/<%= workout.metric %>
-                </td>
-            </tr>
-        <% }); %>
-    </tbody>
-</table>
+                if (
+                    date.getFullYear() === today.getFullYear() &&
+                    date.getMonth() === today.getMonth() &&
+                    date.getDate() === today.getDate()
+                ) {
+                    return `Today at ${hours}:${minutes}`;
+                } else if (
+                    date.getFullYear() === yesterday.getFullYear() &&
+                    date.getMonth() === yesterday.getMonth() &&
+                    date.getDate() === yesterday.getDate()
+                ) {
+                    return `Yesterday at ${hours}:${minutes}`;
+                } else {
+                    return `${year}-${month}-${day} at ${hours}:${minutes}`;
+                }
+            }) () %>
+        </div><br>
+        <div class="workoutdetails">
+            <div><a href="/workouts/<%= workout._id %>" class="link" id="activitytitle">
+                <%= workout.title %>
+            </a></div>
+            <div class="horizontaldetails">
+                <div class="detail"><div class="workoutlabel">Time</div>
+                    <div class="workoutdata">
+                        <%= (() => {
+                            let formattedHours = String(workout.hours || 0).padStart(2);
+                            let formattedMinutes = String(workout.minutes || 0).padStart(2);
+                            let formattedSeconds = String(workout.seconds || 0).padStart(2, '0');
+
+                            if (formattedHours === ' 0' && formattedMinutes === ' 0') {
+                                return `${formattedSeconds}s`;
+                            } else if (formattedHours === ' 0') {
+                                return `${formattedMinutes}:${formattedSeconds}`;
+                            } else if (formattedMinutes === ' 0') {
+                                return `${formattedHours}:00:${formattedSeconds}`;
+                            } else {
+                                return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+                            }
+                        }) () %>
+                    </div>
+                </div>
+                <div class="detail"><div class="workoutlabel">Distance</div>
+                    <div class="workoutdata">
+                        <%= workout.distance %> <%= workout.metric %>
+                    </div>
+                </div>
+                <div class="detail"><div class="workoutlabel">Pace</div>
+                    <div class="workoutdata">
+                        <%= (() => { 
+                            let hourscon = (workout.hours) * 3600;
+                            let minutescon = (workout.minutes) * 60;
+                            let time = hourscon + minutescon + (workout.seconds);
+                            let paceInSeconds = time / (workout.distance);
+        
+                            let paceHours = Math.floor(paceInSeconds / 3600);
+                            let paceMinutes = Math.floor((paceInSeconds % 3600) / 60);
+                            let paceSeconds = Math.floor(paceInSeconds % 60);
+        
+                            if (paceHours === 0 && paceMinutes === 0) {
+                                return `${paceSeconds}s`
+                            } else if (paceHours === 0) {
+                                return `${paceMinutes.toString().padStart(2)}:${paceSeconds.toString().padStart(2, '0')}`;
+                            } else {
+                                return `${paceHours.toString().padStart(2, '0')}:${paceMinutes.toString().padStart(2, '0')}:${paceSeconds.toString().padStart(2, '0')}`;
+                            }
+                        }) () %>/<%= workout.metric %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+
 <% } %>
 
 <%- include('./partials/footer') %>

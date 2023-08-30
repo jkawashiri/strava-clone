@@ -6,7 +6,7 @@
     <thead>
         <tr>
             <th>Activity</th>
-            <th>Date & Time</th>
+            <th>Time & Date</th>
             <th>Time</th>
             <th>Distance</th>
             <th>Pace</th>
@@ -16,13 +16,18 @@
         <tr>
             <td><%= workout.activity %></td>
             <td><%= (() => { 
+                    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                
                     let date = new Date(workout.date);
+
+                    let dayName = daysOfWeek[date.getDay()];
                     let year = date.getFullYear();
                     let month = (date.getMonth() + 1).toString().padStart(2, '0');
                     let day = date.getDate().toString().padStart(2, '0');
                     let hours = date.getHours().toString().padStart(2);
                     let minutes = date.getMinutes().toString().padStart(2, '0');
-                    return `${year}-${month}-${day} ${hours}:${minutes}`;
+
+                    return `${hours}:${minutes} on ${dayName}, ${year}-${month}-${day}`;
                 }) () %>
             </td>
             <td><%= (() => {
