@@ -8,7 +8,7 @@ Home page:
 "My Activities" page:
 ![Screenshot](https://i.imgur.com/LlgzAaf.png)
 "Show View" page:
-![Screenshot](https://i.imgur.com/2zmmDQK.png)
+![Screenshot](https://i.imgur.com/MxlcSYP.png)
 Adding an Activity page:
 ![Screenshot](https://i.imgur.com/VGrsoH8.png)
 Editing an Activity page:
