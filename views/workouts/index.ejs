@@ -38,13 +38,14 @@
                 </a></td>
                 <td><%= (() => {
                         let formattedHours = String(workout.hours || 0).padStart(2);
-                        let formattedMinutes = String(workout.minutes || 0).padStart(2);
+                        let formattedMinutes = String(workout.minutes || 0).padStart(2, '0');
                         let formattedSeconds = String(workout.seconds || 0).padStart(2, '0');
 
-                        if (formattedHours === ' 0' && formattedMinutes === ' 0') {
+                        if (formattedHours === ' 0' && formattedMinutes === '00') {
                             return `${formattedSeconds}s`;
                         } else if (formattedHours === ' 0') {
-                            return `${formattedMinutes}:${formattedSeconds}`;
+                            let reformattedMinutes = String(Number(formattedMinutes));
+                            return `${reformattedMinutes}:${formattedSeconds}`;
                         } else if (formattedMinutes === ' 0') {
                             return `${formattedHours}:00:${formattedSeconds}`;
                         } else {

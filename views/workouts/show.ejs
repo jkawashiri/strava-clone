@@ -27,44 +27,49 @@
                     let hours = date.getHours().toString().padStart(2);
                     let minutes = date.getMinutes().toString().padStart(2, '0');
 
+                    if (hours === ' 0') {
+                        hours = '00';
+                    }
+
                     return `${hours}:${minutes} on ${dayName}, ${year}-${month}-${day}`;
                 }) () %>
             </td>
             <td><%= (() => {
-                let formattedHours = String(workout.hours || 0).padStart(2);
-                let formattedMinutes = String(workout.minutes || 0).padStart(2);
-                let formattedSeconds = String(workout.seconds || 0).padStart(2, '0');
+                    let formattedHours = String(workout.hours || 0).padStart(2);
+                    let formattedMinutes = String(workout.minutes || 0).padStart(2, '0');
+                    let formattedSeconds = String(workout.seconds || 0).padStart(2, '0');
 
-                if (formattedHours === ' 0' && formattedMinutes === ' 0') {
-                    return `${formattedSeconds}s`;
-                } else if (formattedHours === ' 0') {
-                    return `${formattedMinutes}:${formattedSeconds}`;
-                } else if (formattedMinutes === ' 0') {
-                    return `${formattedHours}:00:${formattedSeconds}`;
-                } else {
-                    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-                }
-            }) () %>
+                    if (formattedHours === ' 0' && formattedMinutes === '00') {
+                        return `${formattedSeconds}s`;
+                    } else if (formattedHours === ' 0') {
+                        let reformattedMinutes = String(Number(formattedMinutes));
+                        return `${reformattedMinutes}:${formattedSeconds}`;
+                    } else if (formattedMinutes === ' 0') {
+                        return `${formattedHours}:00:${formattedSeconds}`;
+                    } else {
+                        return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+                    }
+                }) () %>
             </td>
             <td><%= workout.distance %> <%= workout.metric %></td>
             <td><%= (() => { 
-                let hoursToSeconds = (workout.hours) * 3600;
-                let minutesToSeconds = (workout.minutes) * 60;
-                let time = hoursToSeconds + minutesToSeconds + (workout.seconds);
-                let paceInSeconds = time / (workout.distance);
+                    let hoursToSeconds = (workout.hours) * 3600;
+                    let minutesToSeconds = (workout.minutes) * 60;
+                    let time = hoursToSeconds + minutesToSeconds + (workout.seconds);
+                    let paceInSeconds = time / (workout.distance);
 
-                let paceHours = Math.floor(paceInSeconds / 3600);
-                let paceMinutes = Math.floor((paceInSeconds % 3600) / 60);
-                let paceSeconds = Math.floor(paceInSeconds % 60);
+                    let paceHours = Math.floor(paceInSeconds / 3600);
+                    let paceMinutes = Math.floor((paceInSeconds % 3600) / 60);
+                    let paceSeconds = Math.floor(paceInSeconds % 60);
 
-                if (paceHours === 0 && paceMinutes === 0) {
-                    return `${paceSeconds}s`
-                } else if (paceHours === 0) {
-                    return `${paceMinutes.toString().padStart(2)}:${paceSeconds.toString().padStart(2, '0')}`;
-                } else {
-                    return `${paceHours.toString().padStart(2, '0')}:${paceMinutes.toString().padStart(2, '0')}:${paceSeconds.toString().padStart(2, '0')}`;
-                }
-            }) () %>/<%= workout.metric %>
+                    if (paceHours === 0 && paceMinutes === 0) {
+                        return `${paceSeconds}s`
+                    } else if (paceHours === 0) {
+                        return `${paceMinutes.toString().padStart(2)}:${paceSeconds.toString().padStart(2, '0')}`;
+                    } else {
+                        return `${paceHours.toString().padStart(2, '0')}:${paceMinutes.toString().padStart(2, '0')}:${paceSeconds.toString().padStart(2, '0')}`;
+                    }
+                }) () %>/<%= workout.metric %>
             </td>
         </tr>
     </tbody>
