@@ -1,12 +1,12 @@
-# Strava Clone
+# Prova
 
-Strava is a popular app that many people use to track their fitness endeavors. The app allows you to post your workouts on the platform, as well as view and interact with other people's posts. It typically is used by endurance athletes, but the app has a wide variety of activities you can post. I'm a big fan of Strava so I wanted to make my own version of it and add as many of the same features as Strava as I can in a week. My version focuses on a few of the more common endurance activities: running, swimming, and cycling.
+My goal for this project was to create a clone of a popular app called Strava. Strava is an app that many people use to track their fitness endeavors. The app allows you to post your workouts on the platform, as well as view and interact with other people's posts. It typically is used by endurance athletes, but the app has a wide variety of activities you can post. I'm a big fan of Strava so I wanted to make my own version of it and add as many of the same features as Strava as I can in a week. My version focuses on a few of the more common endurance activities: running, swimming, and cycling.
 
 # Screenshots
 Home page:
-![Screenshot](https://i.imgur.com/EHhNpnd.png)
+![Screenshot](https://i.imgur.com/CanQLcF.png)
 "My Activities" page:
-![Screenshot](https://i.imgur.com/LlgzAaf.png)
+![Screenshot](https://i.imgur.com/VzyGNou.png)
 "Show View" page:
 ![Screenshot](https://i.imgur.com/MxlcSYP.png)
 Adding an Activity page:

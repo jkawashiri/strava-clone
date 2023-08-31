@@ -33,7 +33,7 @@
                         return `${dayName}, ${year}-${month}-${day}`;
                     }) () %>
                 </td>
-                <td><a href="/workouts/<%= workout._id %>">
+                <td><a href="/workouts/<%= workout._id %>" id="workouttitle">
                     <%= workout.title %>
                 </a></td>
                 <td><%= (() => {

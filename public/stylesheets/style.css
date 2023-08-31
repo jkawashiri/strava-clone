@@ -255,3 +255,12 @@ td {
 #deletecomment:hover {
   color: rgb(252, 72, 0);
 }
+
+#workouttitle {
+  color: rgb(252, 72, 0);
+}
+
+#workouttitle:hover {
+  color: rgb(223, 65, 0);
+  text-decoration: underline;
+}
