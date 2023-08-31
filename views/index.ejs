@@ -35,13 +35,14 @@
                 }
             }) () %>
         </div><br>
-        <div class="workoutdetails">
-            <div><a href="/workouts/<%= workout._id %>" class="link" id="activitytitle">
+        <div class="workout-details">
+            <a href="/workouts/<%= workout._id %>" id="activity-title">
                 <%= workout.title %>
-            </a></div>
-            <div class="horizontaldetails">
-                <div class="detail"><div class="workoutlabel">Time</div>
-                    <div class="workoutdata">
+            </a>
+            <div class="time-distance-pace">
+                <div class="data-container">
+                    <div class="workout-label">Time</div>
+                    <div class="workout-data">
                         <%= (() => {
                             let formattedHours = String(workout.hours || 0).padStart(2);
                             let formattedMinutes = String(workout.minutes || 0).padStart(2);
@@ -59,17 +60,19 @@
                         }) () %>
                     </div>
                 </div>
-                <div class="detail"><div class="workoutlabel">Distance</div>
-                    <div class="workoutdata">
+                <div class="data-container">
+                    <div class="workout-label">Distance</div>
+                    <div class="workout-data">
                         <%= workout.distance %> <%= workout.metric %>
                     </div>
                 </div>
-                <div class="detail"><div class="workoutlabel">Pace</div>
-                    <div class="workoutdata">
+                <div class="data-container">
+                    <div class="workout-label">Pace</div>
+                    <div class="workout-data">
                         <%= (() => { 
-                            let hourscon = (workout.hours) * 3600;
-                            let minutescon = (workout.minutes) * 60;
-                            let time = hourscon + minutescon + (workout.seconds);
+                            let hoursToSeconds = (workout.hours) * 3600;
+                            let minutesToSeconds = (workout.minutes) * 60;
+                            let time = hoursToSeconds + minutesToSeconds + (workout.seconds);
                             let paceInSeconds = time / (workout.distance);
         
                             let paceHours = Math.floor(paceInSeconds / 3600);
@@ -90,7 +93,6 @@
         </div>
     </div>
     <% }); %>
-
 <% } %>
 
 <%- include('./partials/footer') %>

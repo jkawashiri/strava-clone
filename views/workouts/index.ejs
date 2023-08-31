@@ -33,7 +33,7 @@
                         return `${dayName}, ${year}-${month}-${day}`;
                     }) () %>
                 </td>
-                <td><a href="/workouts/<%= workout._id %>" id="workouttitle">
+                <td><a href="/workouts/<%= workout._id %>" id="workout-title">
                     <%= workout.title %>
                 </a></td>
                 <td><%= (() => {
@@ -54,9 +54,9 @@
                 </td>
                 <td><%= workout.distance %> <%= workout.metric %></td>
                 <td><%= (() => { 
-                        let hourscon = (workout.hours) * 3600;
-                        let minutescon = (workout.minutes) * 60;
-                        let time = hourscon + minutescon + (workout.seconds);
+                        let hoursToSeconds = (workout.hours) * 3600;
+                        let minutesToSeconds = (workout.minutes) * 60;
+                        let time = hoursToSeconds + minutesToSeconds + (workout.seconds);
                         let paceInSeconds = time / (workout.distance);
 
                         let paceHours = Math.floor(paceInSeconds / 3600);

@@ -172,14 +172,15 @@ td {
   padding-bottom: 20px;
 }
 
-#activitytitle {
+#activity-title {
   font-size: 18px;
   color: black;
   font-weight: bold;
 }
 
-#activitytitle:hover {
+#activity-title:hover {
   color: darkblue;
+  text-decoration: underline;
 }
 
 .post {
@@ -190,16 +191,16 @@ td {
   padding: 20px;
 }
 
-.workoutdetails {
+.workout-details {
   margin-left: 20px;
 }
 
-.horizontaldetails {
+.time-distance-pace {
   display: flex;
   align-items: center;
 }
 
-.detail {
+.data-container {
   margin: 10px 10px 10px 0;
 } 
 
@@ -208,21 +209,21 @@ td {
   margin-left: 48px;
 }
 
-.workoutdata {
+.workout-data {
   font-size: 18px;
 }
 
-.workoutlabel {
+.workout-label {
   color: gray;
 }
 
-#commentslist {
+#comments-list {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#likecomment {
+#like-comment {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -243,7 +244,7 @@ td {
   flex-direction: column;
 }
 
-#deletecomment {
+#delete-comment {
   background: none;
   border: none; 
   padding: 0; 
@@ -252,15 +253,15 @@ td {
   color: rgb(255, 164, 128);
 } 
 
-#deletecomment:hover {
+#delete-comment:hover {
   color: rgb(252, 72, 0);
 }
 
-#workouttitle {
+#workout-title {
   color: rgb(252, 72, 0);
 }
 
-#workouttitle:hover {
+#workout-title:hover {
   color: rgb(223, 65, 0);
   text-decoration: underline;
 }

@@ -48,9 +48,9 @@
             </td>
             <td><%= workout.distance %> <%= workout.metric %></td>
             <td><%= (() => { 
-                let hourscon = (workout.hours) * 3600;
-                let minutescon = (workout.minutes) * 60;
-                let time = hourscon + minutescon + (workout.seconds);
+                let hoursToSeconds = (workout.hours) * 3600;
+                let minutesToSeconds = (workout.minutes) * 60;
+                let time = hoursToSeconds + minutesToSeconds + (workout.seconds);
                 let paceInSeconds = time / (workout.distance);
 
                 let paceHours = Math.floor(paceInSeconds / 3600);
@@ -73,34 +73,34 @@
 <% if (user?._id.equals(workout.user)) { %>
     <div class="edit-delete">
         <a href="/workouts/<%= workout._id %>/edit">
-            <button id="editbtn"><span class="material-symbols-outlined">
-                edit
-                </span>Edit</button>
+            <button id="editbtn">
+                <span class="material-symbols-outlined">edit</span>Edit
+            </button>
         </a>
         <form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
-            <button type="submit" id="deletebtn"><span class="material-symbols-outlined">
-                delete
-                </span>Delete</button>
+            <button type="submit" id="deletebtn">
+                <span class="material-symbols-outlined">delete</span>Delete
+            </button>
         </form>
     </div>
 <% } %>
 
 <br><br>
 
-<div id="likecomment">
+<div id="like-comment">
     <div id="like">
         <% if (user) { %>
             <% if (!workout.likes.some(like => like.user.equals(userId))) { %>
                 <form action="/workouts/<%= workout._id %>/likes" method="POST">
-                    <button type="submit" id="likebtn"><span class="material-symbols-outlined">
-                        thumb_up
-                        </span></button>
+                    <button type="submit" id="likebtn">
+                        <span class="material-symbols-outlined">thumb_up</span>
+                    </button>
                 </form>
             <% } else { %>
                 <form action="/likes/<%= likeId %>?_method=DELETE" method="POST">
-                    <button type="submit" id="dislikebtn"><span class="material-symbols-outlined">
-                        thumb_up
-                        </span></button>
+                    <button type="submit" id="dislikebtn">
+                        <span class="material-symbols-outlined">thumb_up</span>
+                    </button>
                 </form>
             <% } %>
         <% } %>
@@ -108,16 +108,15 @@
             <a href="/workouts/<%= workout._id %>/likes" class="link">Likes:</a> <%= workout.likes.length %>
         <% } %>
     </div>
-
-        <br><br><form action="/workouts/<%= workout._id %>/comments" method="POST">
-            <div id="commentbtn">
-                <textarea name="comment" id="comment"></textarea><br>
-                <button type="submit">Add Comment</button>
-            </div>
-        </form><br>
+    <br><br><form action="/workouts/<%= workout._id %>/comments" method="POST">
+        <div id="commentbtn">
+            <textarea name="comment" id="comment"></textarea><br>
+            <button type="submit">Add Comment</button>
+        </div>
+    </form><br>
 </div><br>
 
-<table id="commentslist">
+<table id="comments-list">
     <tbody>
         <% workout.comments.forEach(function(comment) { %>
         <tr>
@@ -127,7 +126,7 @@
             <td>
                 <% if (user?._id.equals(comment.user)) { %>
                     <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                        <button type="submit" id="deletecomment">Delete</button>
+                        <button type="submit" id="delete-comment">Delete</button>
                     </form>
                 <% } %>
             </td>
