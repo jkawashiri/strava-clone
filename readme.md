@@ -24,7 +24,7 @@ Editing an Activity page:
 - Express.js
 
 # Getting Started
-Click here to explore the app. 
+Click [here](https://strava-clone-85e751d31df9.herokuapp.com/) to explore the app. 
 You will be prompted to login via OAuth and once you do, you will have access to post your workouts and view/interact with others.
 
 # Next Steps
